@@ -26,8 +26,6 @@ zerops:
       siteConfigPath: site.conf.tmpl
       envVariables:
         APP_NAME: ZeropsTwill
-        APP_DEBUG: true
-        APP_ENV: development
         APP_LOCALE: en
         APP_FAKER_LOCALE: en_US
         APP_FALLBACK_LOCALE: en
@@ -79,14 +77,13 @@ zerops:
         AWS_USE_PATH_STYLE_ENDPOINT: true
 
       initCommands:
-#        - php artisan view:cache
-#        - php artisan config:cache
-#        - php artisan route:cache
-
         - sudo -E -u zerops -- zsc execOnce initialize -- php artisan twill:install -n
         - sudo -E -u zerops -- zsc execOnce initializeadmin -- php artisan twill:superadmin twill@zerops.io zerops
         - sudo -E -u zerops -- zsc execOnce ${appVersionId} -- php artisan migrate --isolated --force
         - sudo -E -u zerops -- zsc execOnce initializeSeed -- php artisan db:seed --force
+#        - php artisan view:cache
+#        - php artisan config:cache
+#        - php artisan route:cache
 #        - php artisan optimize
       healthCheck:
         httpGet:

@@ -1,0 +1,49 @@
+#yamlPreprocessor=on
+project:
+  name: recipe-twill
+  tags:
+    - zerops-recipe
+    - development
+
+services:
+  - hostname: app
+    type: php-nginx@8.3
+    buildFromGit: https://github.com/krls2020/twill
+    enableSubdomainAccess: true
+    envSecrets:
+      APP_KEY: <@generateRandomString(<32>)>
+    envVariables:
+      KRLS_TEST: projectimportenv
+
+  - hostname: db
+    type: postgresql@16
+    mode: NON_HA
+    priority: 10
+
+  - hostname: adminer
+    type: php-apache@8.3
+    buildFromGit: https://github.com/zeropsio/recipe-adminer@main
+    enableSubdomainAccess: true
+
+  - hostname: redis
+    type: keydb@6
+    mode: NON_HA
+    priority: 10
+
+  - hostname: mailpit
+    type: go@1
+    buildFromGit: https://github.com/zeropsio/recipe-mailpit@alpha
+    enableSubdomainAccess: true
+
+  - hostname: storage
+    type: object-storage
+    objectStorageSize: 2
+    objectStoragePolicy: public-read
+    priority: 10
+
+  - hostname: s3browser
+    type: php-nginx@8.3
+    buildFromGit: https://github.com/zeropsio/s3browser
+    enableSubdomainAccess: true
+    envSecrets:
+      APP_KEY: <@generateRandomString(<32>)>

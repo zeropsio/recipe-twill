@@ -3,11 +3,11 @@
 This repository demonstrates how to set up and deploy Twill applications using Zerops for both development and
 production environments.
 
+![TwillZerops](https://github.com/zeropsio/recipe-shared-assets/blob/main/covers/svg/cover-twill.svg)
+
 [Twill](https://twill.io) is a CMS toolkit for Laravel that makes it quick and easy to create a custom, powerful admin
 console. This recipe showcases how to run a Twill application on Zerops, including all advanced functionalities, with
 sessions and cache stored in Redis and files stored in Object Storage, making it suitable for production of any size.
-
-![TwillZerops](https://github.com/zeropsio/recipe-shared-assets/blob/main/covers/svg/cover-twill.svg)
 
 <br/>
 

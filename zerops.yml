@@ -77,7 +77,7 @@ zerops:
         AWS_USE_PATH_STYLE_ENDPOINT: true
 
       initCommands:
-        - sudo -E -u zerops -- zsc execOnce initialize -- php artisan twill:install -n
+        - sudo -E -u zerops -- zsc execOnce initialize -- php artisan twill:install -n --env=development
         - sudo -E -u zerops -- zsc execOnce initializeadmin -- php artisan twill:superadmin twill@zerops.io zerops
         - sudo -E -u zerops -- zsc execOnce ${appVersionId} -- php artisan migrate --isolated --force
         - sudo -E -u zerops -- zsc execOnce initializeSeed -- php artisan db:seed --force

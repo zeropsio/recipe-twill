@@ -1,6 +1,6 @@
 #yamlPreprocessor=on
 project:
-  name: recipe-twill
+  name: twillcms-devel
   tags:
     - zerops-recipe
     - development
@@ -20,19 +20,14 @@ services:
     mode: NON_HA
     priority: 10
 
-  - hostname: adminer
-    type: php-apache@8.3
-    buildFromGit: https://github.com/zeropsio/recipe-adminer@main
-    enableSubdomainAccess: true
-
   - hostname: redis
-    type: keydb@6
+    type: valkey@7.2
     mode: NON_HA
     priority: 10
 
   - hostname: mailpit
     type: go@1
-    buildFromGit: https://github.com/zeropsio/recipe-mailpit@alpha
+    buildFromGit: https://github.com/zeropsio/recipe-mailpit
     enableSubdomainAccess: true
 
   - hostname: storage
@@ -40,10 +35,3 @@ services:
     objectStorageSize: 2
     objectStoragePolicy: public-read
     priority: 10
-
-  - hostname: s3browser
-    type: php-nginx@8.3
-    buildFromGit: https://github.com/zeropsio/s3browser
-    enableSubdomainAccess: true
-    envSecrets:
-      APP_KEY: <@generateRandomString(<32>)>

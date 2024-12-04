@@ -1,0 +1,34 @@
+#yamlPreprocessor=on
+  project:
+    name: twillcms-prod
+    corePackage: SERIOUS
+    tags:
+      - zerops-recipe
+      - production
+
+  services:
+    - hostname: app
+      type: php-nginx@8.3
+      buildFromGit: https://github.com/zeropsio/recipe-twill
+      enableSubdomainAccess: true
+      minContainers: 2
+      envSecrets:
+        APP_KEY: <@generateRandomString(<32>)>
+        APP_DEBUG: false
+        APP_ENV: production
+
+    - hostname: db
+      type: postgresql@16
+      mode: HA
+      priority: 10
+
+    - hostname: redis
+      type: valkey@7.2
+      mode: HA
+      priority: 10
+
+    - hostname: storage
+      type: object-storage
+      objectStorageSize: 2
+      objectStoragePolicy: public-read
+      priority: 10

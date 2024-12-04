@@ -43,7 +43,6 @@ the Zerops app.
 This setup includes tools and configurations for a rapid development cycle:
 
 - Mailpit as the SMTP mock server
-- Adminer for quick database management
 - Fully commented-out configurations that you can easily switch to production settings
 
 ### Production Setup
@@ -54,7 +53,6 @@ For a production-ready environment, consider the following modifications:
 - Use at least two containers for the Twill service to achieve high reliability and resilience by adding
   `minContainers: 2` in the recipe YAML.
 - Use a production-ready third-party SMTP server instead of Mailpit.
-- Disable public access to Adminer or remove it altogether from the recipe YAML.
 
 You can see a production example setup at [
 `zerops-project-import-production.yml`](https://github.com/zeropsio/recipe-twill/blob/main/zerops-project-import-production.yml).

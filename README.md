@@ -24,7 +24,7 @@ the Zerops app.
 ## Recipe Features
 
 - Twill running on a load-balanced **Zerops PHP + Nginx** service
-- Zerops **MySQL** service as the database
+- Zerops **PostgreSQL** service as the database
 - Zerops KeyDB (**Redis**) service for session and cache
 - Zerops **Object Storage** (S3 compatible) service as the file system
 - Proper setup for Laravel **cache**, **optimization**, and **database migrations**
